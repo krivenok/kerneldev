@@ -1,0 +1,51 @@
+#!/usr/bin/bash
+
+build() {
+    local mod
+    local bin
+    for mod in \
+                libnvdimm \
+                nd_blk \
+                nd_btt \
+                nd_e820 \
+                nd_pmem \
+                null_blk \
+                brd \
+                libnvdimm \
+                nfit \
+                nfit_test \
+                nfit_test_iomap \
+                ; \
+    do
+        add_module "$mod"
+    done
+
+    for bin in \
+      zcat \
+      vim \
+      vi \
+      bash \
+      gzip \
+      sulogin \
+      iasl \
+      acpibin \
+      acpidump \
+      acpiexamples \
+      acpiexec \
+      acpihelp \
+      acpinames \
+      acpisrc \
+      acpixtract \
+      ; \
+    do
+        add_binary "$bin"
+    done
+}
+
+help() {
+  cat <<HELPEOF
+This hook adds some kernel modules and needed tools. 
+HELPEOF
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

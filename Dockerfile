@@ -3,7 +3,8 @@ FROM nfnty/arch-devel
 MAINTAINER Dmitry Krivenok <dmitry.krivenok@emc.com>
 
 # Install stuff missing in base container.
-RUN pacman --noconfirm -S kmod bc inetutils vim mkinitcpio iasl vi
+RUN pacman --noconfirm -Sy
+RUN pacman --noconfirm -S kmod bc inetutils vim mkinitcpio iasl vi qemu
 
 # Copy files used to build initramfs
 COPY dev_hook /usr/lib/initcpio/install/dev_hook
@@ -18,3 +19,5 @@ RUN echo 'dk ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 RUN mkdir /home/dk
 RUN chown dk:dk /home/dk
 ENV HOME /home/dk
+
+COPY run_kernel_in_qemu.sh /usr/bin/run_kernel_in_qemu.sh

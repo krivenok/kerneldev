@@ -18,7 +18,10 @@ RUN echo 'dk ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
 
 # Setup home directory
 RUN mkdir /home/dk
-RUN chown dk:dk /home/dk
+RUN git clone https://github.com/krivenok/conf.git /tmp/conf
+RUN mv /tmp/conf/home/.[a-zA-Z0-9]* /home/dk
+RUN rm -rf /tmp/conf
+RUN chown -R dk:dk /home/dk
 ENV HOME /home/dk
 
 COPY run_kernel_in_qemu.sh /usr/bin/run_kernel_in_qemu.sh

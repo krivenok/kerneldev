@@ -5,6 +5,7 @@ MAINTAINER Dmitry Krivenok <dmitry.krivenok@emc.com>
 # Install stuff missing in base container.
 RUN pacman --noconfirm -Sy
 RUN pacman --noconfirm -S kmod bc inetutils vim mkinitcpio iasl vi qemu
+RUN pacman --noconfirm -S extra/perl-mime-tools community/perl-authen-sasl community/perl-net-smtp-ssl
 
 # Copy files used to build initramfs
 COPY dev_hook /usr/lib/initcpio/install/dev_hook

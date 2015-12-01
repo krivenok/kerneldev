@@ -4,11 +4,12 @@ MAINTAINER Dmitry Krivenok <dmitry.krivenok@emc.com>
 
 # Install stuff missing in base container.
 RUN pacman --noconfirm -Sy
-RUN pacman --noconfirm -S kmod bc inetutils vim mkinitcpio iasl vi qemu util-linux strace
+RUN pacman --noconfirm -S kmod bc inetutils vim mkinitcpio iasl vi qemu util-linux strace indent
 RUN pacman --noconfirm -S extra/perl-mime-tools community/perl-authen-sasl community/perl-net-smtp-ssl
 
 # Copy files used to build initramfs
 COPY dev_hook /usr/lib/initcpio/install/dev_hook
+COPY runtime_dev_hook /usr/lib/initcpio/hooks/dev_hook
 COPY build_initcpio.sh /usr/bin/build_initcpio.sh
 
 # Add users and setup password less sudo

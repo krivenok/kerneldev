@@ -21,6 +21,8 @@ build() {
     done
 
     for bin in \
+      uuidgen \
+      indent \
       find \
       zcat \
       zgrep \
@@ -43,6 +45,8 @@ build() {
     do
         add_binary "$bin"
     done
+
+    add_runscript
 }
 
 help() {

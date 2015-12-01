@@ -1,0 +1,10 @@
+#!/usr/bin/ash
+
+run_hook() {
+    if zgrep -q 'CONFIG_DEBUG_FS=[ym]' /proc/config.gz ; then
+        mount -t debugfs debugfs /sys/kernel/debug
+	echo "file *nvdimm* +p" > /sys/kernel/debug/dynamic_debug/control
+    fi
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

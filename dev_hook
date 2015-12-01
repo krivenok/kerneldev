@@ -21,7 +21,10 @@ build() {
     done
 
     for bin in \
+      find \
       zcat \
+      zgrep \
+      strace \
       vim \
       vi \
       bash \

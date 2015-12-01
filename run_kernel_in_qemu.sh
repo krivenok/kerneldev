@@ -10,4 +10,4 @@ sudo qemu-system-x86_64 -enable-kvm \
       -display none -serial stdio \
       -kernel  arch/x86/boot/bzImage \
       -initrd ./initramfs-${VERSION}.img \
-      -append "console=ttyS0 ignore_loglevel early_printk=serial,ttyS0 dyndbg=\"file *nfit* +p ; file *nvdimm* +p\" cma=500m"
+      -append "console=ttyS0 ignore_loglevel early_printk=serial,ttyS0"

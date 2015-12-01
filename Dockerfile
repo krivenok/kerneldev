@@ -4,7 +4,7 @@ MAINTAINER Dmitry Krivenok <dmitry.krivenok@emc.com>
 
 # Install stuff missing in base container.
 RUN pacman --noconfirm -Sy
-RUN pacman --noconfirm -S kmod bc inetutils vim mkinitcpio iasl vi qemu
+RUN pacman --noconfirm -S kmod bc inetutils vim mkinitcpio iasl vi qemu util-linux strace
 RUN pacman --noconfirm -S extra/perl-mime-tools community/perl-authen-sasl community/perl-net-smtp-ssl
 
 # Copy files used to build initramfs
@@ -21,6 +21,7 @@ RUN mkdir /home/dk
 RUN git clone https://github.com/krivenok/conf.git /tmp/conf
 RUN mv /tmp/conf/home/.[a-zA-Z0-9]* /home/dk
 RUN rm -rf /tmp/conf
+RUN mkdir -p /home/dk/.vim/doc
 RUN chown -R dk:dk /home/dk
 ENV HOME /home/dk
 
